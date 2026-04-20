@@ -1332,6 +1332,9 @@ const PLAN_MESSAGES = {
   }
 };
 
+// ── 自動讀取網址的 uid 參數（LINE userId）──────────
+const LINE_USER_ID = new URLSearchParams(window.location.search).get('uid') || '';
+
 let currentPlan = null;
 
 function handleBooking(planId, planName, price) {
@@ -1382,7 +1385,8 @@ async function submitBooking() {
     contact,
     note,
     submitted_at: new Date().toISOString(),
-    source: 'career_consulting_page'
+    source: 'career_consulting_page',
+    line_user_id: LINE_USER_ID
   };
 
   try {
